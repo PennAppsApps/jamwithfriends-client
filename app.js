@@ -23,11 +23,14 @@ prompt.get(['ip'], function(e, r){
       launchpad.on('ready', function(launchpad){
         // clear before anything, it breaks toggle if not cleared
         launchpad.clear();
-        launchpad.allLight(launchpad.colors.green.high);
 
         // START LAUNCHPAD TRIGGERS
         launchpad.on('press', function(button){
           socket.emit('button:press', {x: button.x, y: button.y});
+        });
+
+        launchpad.on('release', function(button){
+          socket.emit('button:release', {x: button.x, button.y});
         });
         // END LAUNCHPAD TRIGGERS
 
@@ -47,6 +50,10 @@ prompt.get(['ip'], function(e, r){
           }else{
             button.dark();
           }
+        });
+
+        socket.on('button:light:all', function(d){
+          launchpad.allLight(d.color || 3);
         });
         // END LAUNCHPAD ACTIONS
       });

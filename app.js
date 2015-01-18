@@ -31,7 +31,7 @@ prompt.get(['ip'], function(e, r){
         });
 
         launchpad.on('release', function(button){
-          socket.emit('button:release', {x: button.x, button.y});
+          socket.emit('button:release', {x: button.x, y: button.y});
         });
         // END LAUNCHPAD TRIGGERS
 

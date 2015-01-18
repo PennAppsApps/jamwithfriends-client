@@ -3,7 +3,7 @@ var prompt = require('prompt');
 prompt.start();
 
 prompt.get(['ip'], function(e, r){
-  socket = require('socket.io-client')("ws://158.130.165.151:3000");
+  socket = require('socket.io-client')(r.ip || "ws://158.130.165.151:3000");
   // console.log(r.ip);
 
   socket.on('connect', function(d){
@@ -23,6 +23,7 @@ prompt.get(['ip'], function(e, r){
       launchpad.on('ready', function(launchpad){
         // clear before anything, it breaks toggle if not cleared
         launchpad.clear();
+        launchpad.lightAll(launchpad.colors.green.high);
 
         // START LAUNCHPAD TRIGGERS
         launchpad.on('press', function(button){

@@ -23,7 +23,7 @@ prompt.get(['ip'], function(e, r){
       launchpad.on('ready', function(launchpad){
         // clear before anything, it breaks toggle if not cleared
         launchpad.clear();
-        launchpad.lightAll(launchpad.colors.green.high);
+        launchpad.allLight(launchpad.colors.green.high);
 
         // START LAUNCHPAD TRIGGERS
         launchpad.on('press', function(button){

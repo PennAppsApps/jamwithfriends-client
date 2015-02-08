@@ -20,7 +20,7 @@ prompt.get(['ip', 'name'], function(e, r){
       console.log('sending launchpad info');
       socket.emit('device:select', {id: 'launchpad', name: launchpadName});
 
-      var launchpad = require('midi-launchpad').connect(0, false);
+      // var launchpad = require('midi-launchpad').connect(0, false);
       var midi = require('midi');
 
       // set up raw midi if user doesn't want to programmatically do shit
